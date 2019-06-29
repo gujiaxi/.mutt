@@ -1,0 +1,10 @@
+# vi: ft=muttrc
+
+### key bindings
+macro index,pager e "<save-message>$mbox<enter>" "Archive mail"
+macro index,pager S "<save-message>$spoolfile<enter>" "Restore mail"
+macro index,pager gi "<change-folder>$spoolfile<enter>" "Go to Inbox"
+macro index,pager ga "<change-folder>$mbox<enter>" "Go to All Mail"
+macro index,pager gs "<change-folder>$record<enter>" "Go to Sent Mail"
+macro index,pager gt "<change-folder>$trash<enter>" "Go to Trash"
+macro index,pager gd "<change-folder>$postponed<enter>" "Go to Drafts"

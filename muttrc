@@ -1,0 +1,71 @@
+# vi: ft=muttrc
+
+# -- Misc --
+#
+# charset
+set charset = "utf-8"
+# editor
+set editor = "vim + -c 'setlocal tw=0'"
+# how often to check new mail (seconds)
+set mail_check = 300
+# sort method
+set sort = threads
+set sort_aux = reverse-date-received
+# do not open next mail automatically
+set pager_stop = yes
+# include the original
+set include = yes
+# forward attachments
+set mime_forward = yes
+# reply with body directly
+set fast_reply = yes
+# save sent mails
+set copy = yes
+# prompt when quit
+set quit = ask-yes
+# speed up folder switch
+set sleep_time = 0
+# no prompt for delete
+set delete = yes
+# quick move mail
+set confirmappend = no
+# no prompt after shell commands
+set wait_key = no
+# render html
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+# contact alias
+source ~/.mutt/alias.mutt
+# color scheme
+source ~/.mutt/colors.mutt
+# gnupg functions
+source ~/.mutt/pgp.mutt
+
+# - Cache Settings
+set my_cache_dir = "~/.cache/mutt/"
+set header_cache = $my_cache_dir
+set message_cachedir = $my_cache_dir
+set message_cache_clean = yes
+
+# -- General Key Bindings --
+#
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind attach,index gg first-entry
+bind attach,index G last-entry
+bind attach,index,pager \cf next-page
+bind attach,index,pager \cb previous-page
+
+# -- Multiple Accounts --
+#
+# Account related key bindings
+folder-hook '.*' 'source ~/.mutt/keys.mutt'
+# Default account
+source ~/.mutt/boxes/box-foo.mutt
+# Switching accounts
+macro index ,1 '<sync-mailbox><enter-command>source ~/.mutt/boxes/box-foo.mutt<enter><change-folder>!<enter>'
+macro index ,2 '<sync-mailbox><enter-command>source ~/.mutt/boxes/box-bar.mutt<enter><change-folder>!<enter>'
+# Run mbsync to fetch mails
+macro index ,0 "!mbsync -aqq &<enter><enter-command>echo 'Fetching mails...'<enter>" "Fetch new mails"

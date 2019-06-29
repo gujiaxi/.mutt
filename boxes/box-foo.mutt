@@ -1,0 +1,26 @@
+# vi: ft=muttrc
+
+# - basic information
+set from = "foo@xxx.com"
+set realname = "Foo Lorem"
+set signature = "echo \"Sincerely yours,\nFoo Lorem\" |"
+set my_mailpass = `gpg -qd ~/.authinfo.gpg | sed -n 's/^machine imap.xxx.com .*password \([^ ]*\).*/\1/p'`
+
+# - mail sending
+set smtp_authenticators = 'gssapi:login'
+set smtp_url = "smtp://foo\@xxx.com@smtp.xxx.com:587/"
+set smtp_pass = $my_mailpass
+
+# - mail receiving
+set mbox_type = Maildir
+# -- imap or local
+# set imap_user = "foo@xxx.com"
+# set imap_pass = $my_mailpass
+# set folder = "imaps://imap.xxx.com:993/"
+set folder = "~/Mails/foo@xxx.com/"
+# -- mailboxes
+set spoolfile = "+Inbox"
+set mbox = "+Archive"
+set postponed = "+Drafts"
+set trash = "+Trash"
+set record = "+Sent"
