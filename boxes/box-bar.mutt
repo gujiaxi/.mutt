@@ -2,7 +2,7 @@
 
 # - basic information
 set from = "bar@xxx.com"
-set realname = "Bar"
+set realname = "Bar Ipsum"
 set signature = "echo \"Sincerely yours,\nBar Ipsum\" |"
 set my_mailpass = `gpg -qd ~/.authinfo.gpg | sed -n 's/^machine imap.xxx.com .*password \([^ ]*\).*/\1/p'`
 
